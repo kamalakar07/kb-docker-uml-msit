@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  dcmongo:
+    container_name: dcmongo
+    image: mongo
+    volumes:
+      - '~/mongodb-volume:/data/db'
+    ports:
+      - '27017:27017'
+  dcnodeapp:
+    container_name: dcnodeapp
+    build: ./kbnodeapp
+    volumes:
+      - './kbnodeapp:/app/'
+    ports:
+      - '3000:3000'
+    depends_on:
+      - dcmongo
+    environment:
+      - 'DB_URL=mongodb://dcmongo:27017/EmployeeDB' 
+      - 'PORT=3000'
+  dcnginx:
+    build: ./kbnginx
+    container_name: dcnginx
+    ports:
+      - '80:80'
+    depends_on:
+      - dcnodeapp

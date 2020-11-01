@@ -1,0 +1,9 @@
+# Dependency directories
+kbnodeapp/node_modules/
+kbnodeapp/package-lock.json
+
+# Editors and OSX
+kbnodeapp/.vs
+kbnodeapp/.vscode
+kbnodeapp/.idea
+kbnodeapp/.DS_Store
