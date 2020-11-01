@@ -10,8 +10,6 @@ services:
   dcnodeapp:
     container_name: dcnodeapp
     build: ./kbnodeapp
-    volumes:
-      - './kbnodeapp:/app/'
     ports:
       - '3000:3000'
     depends_on:
